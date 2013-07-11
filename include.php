@@ -1,20 +1,26 @@
 <?php
+/**
+ * @copyright ..........................
+ * @author ........ .......... <someone [at] somewhere [dot] com>
+ */
+
+
 // make sure we are not being called directly
 defined('APP_DIR') or exit();
 
 /**
  * meta
  */
-function tmpHelloWorld_meta()
+function jrHelloWorld_meta()
 {
     $_tmp = array(
         'name'        => 'Hello World',
         'url'         => 'hello',
-        'version'     => '1.0.0a',
-        'developer'   => 'Pete, &copy;'. strftime('%Y'),
-        'description' => 'An example hello world module',
-        'support'     => 'http://www.petermaynard.co.uk',
-        'category'    => 'tools'
+        'version'     => '1.0.0',
+        'developer'   => 'Sombody Somwhere, &copy;' . strftime('%Y'),
+        'description' => 'print Hello World to the screen at: THIS-SITE.com/hello/world',
+        'category'    => 'site',
+        'activate'    => true
     );
     return $_tmp;
 }
@@ -22,7 +28,7 @@ function tmpHelloWorld_meta()
 /**
  * init
  */
-function tmpHelloWorld_init()
+function jrHelloWorld_init()
 {
     return true;
 }
@@ -36,8 +42,8 @@ function tmpHelloWorld_init()
  *
  */
 
-// function tmpHelloWorld_init()
+// function jrHelloWorld_init()
 // {
-//     jrCore_register_module_feature('jrCore','magic_view','tmpHelloWorld','sayhellotome','view_tmpHelloWorld_hi');
+//     jrCore_register_module_feature('jrCore','magic_view','jrHelloWorld','sayhellotome','view_jrHelloWorld_hi');
 //     return true;
 // }
