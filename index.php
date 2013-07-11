@@ -89,3 +89,13 @@ function view_jrHelloWorld_hw($_post,$_user,$_conf)
 }
 
 
+//----------------------------------------
+// modulehello (magic_view)
+//----------------------------------------
+function view_jrHelloWorld_modulehello($_post,$_user,$_conf)
+{
+    $_rep['hello_world'] = 'hello world';
+    $out = jrCore_parse_template('hw.tpl',$_rep,'jrHelloWorld');
+    return $out;
+}
+

@@ -30,20 +30,10 @@ function jrHelloWorld_meta()
  */
 function jrHelloWorld_init()
 {
+    // magic view - seen at /username/blog/profilehello
+    // you need to register with the view from the blog module 
+    // 
+    jrCore_register_module_feature('jrCore','magic_view','jrHelloWorld','modulehello','view_jrHelloWorld_modulehello');
+
     return true;
 }
-
-/**
- * magic view init
- *
- * Which would be seen for all profiles at a url something like:
- * /stevex/audio/sayhellotome
- * /stevex/video/sayhellotome
- *
- */
-
-// function jrHelloWorld_init()
-// {
-//     jrCore_register_module_feature('jrCore','magic_view','jrHelloWorld','sayhellotome','view_jrHelloWorld_hi');
-//     return true;
-// }

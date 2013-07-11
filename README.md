@@ -11,4 +11,11 @@ If its not active already activate it from the info tab ```http://YOUR-SITE.com/
 
 With a slightly more complicated version (it uses templates) visible at ```http://YOUR-SITE.com/hello/saturday``` .
 
+#Profile Hello World
+/username/hello
+
+#Module Magic View 
+/audio/modulehello
+/blog/modulehello
+
 Response to [Forum Question](http://www.jamroom.net/phpBB2/viewtopic.php?p=236618)
