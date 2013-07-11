@@ -1,7 +1,7 @@
 Place these files in ```jamroom/modules/jrHelloWorld```
 
 Once logged in as master admin,
-goto: ```http://YOUR-SITE.com/core/cache_reset``` to reset the caches.
+goto: ```http://YOUR-SITE.com/core/cache_reset``` to reset the caches.  If its still not there, run the integrity check ```http://YOUR-SITE.com/core/integrity_check``` .
 
 You should then see your new jrHelloWorld module under the 'site' section of the admin panel.
 
