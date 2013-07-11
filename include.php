@@ -24,9 +24,20 @@ function tmpHelloWorld_meta()
  */
 function tmpHelloWorld_init()
 {
-    global $_conf;
-    // Link to my custom hello world PHP script.
-    jrCore_register_module_feature('jrCore','tool_view','tmpHelloWorld',"{$_conf['jrCore_base_url']}/modules/tmpHelloWorld/hello.php",array('Hello World','An example hello world module'));
-    
     return true;
 }
+
+/**
+ * magic view init
+ *
+ * Which would be seen for all profiles at a url something like:
+ * /stevex/audio/sayhellotome
+ * /stevex/video/sayhellotome
+ *
+ */
+
+// function tmpHelloWorld_init()
+// {
+//     jrCore_register_module_feature('jrCore','magic_view','tmpHelloWorld','sayhellotome','view_tmpHelloWorld_hi');
+//     return true;
+// }
