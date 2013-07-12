@@ -33,6 +33,7 @@ function view_jrHelloWorld_saturday($_post,$_user,$_conf)
 
 //------------------------------
 // view using $_post
+// gratuitous variations on hello world using url variables
 // THIS-SITE.com/bonjour
 // THIS-SITE.com/hello/hw 
 // THIS-SITE.com/hello/hw/spanish/bold/caps=on
@@ -41,6 +42,19 @@ function view_jrHelloWorld_saturday($_post,$_user,$_conf)
 //------------------------------
 function view_jrHelloWorld_hw($_post,$_user,$_conf)
 {
+// fdebug($_post);
+// (2013-07-12T10:51:09+01:00 0.91176400)-(mem: 8388608)-(pid: 72619)-(uri: /hello/hw/spanish/bolditalic/caps=on)
+// Array
+// (
+//     [_uri] => /hello/hw/spanish/bolditalic/caps=on
+//     [module_url] => hello
+//     [module] => jrHelloWorld
+//     [option] => hw
+//     [_1] => spanish
+//     [_2] => bolditalic
+//     [caps] => on
+// )
+
     $_rep['hello_world'] = 'hello world';
     
     if (isset($_post['_1'])) {
@@ -63,6 +77,9 @@ function view_jrHelloWorld_hw($_post,$_user,$_conf)
 		}
     }
     
+    // use the second variable 
+    // note: use as many as you like. 
+    // $_post['_3'], $_post['_4'], etc
     if (isset($_post['_2'])) {
 		switch ($_post['_2']) {
 			case 'bold':
@@ -80,6 +97,7 @@ function view_jrHelloWorld_hw($_post,$_user,$_conf)
 		}
     }
     
+    // named variable /caps=on/kitten=fluffy/ or caps=on&kitten=fluffy
     if (isset($_post['caps']) && $_post['caps'] == 'on') {
         $_rep['hello_world'] = strtoupper($_rep['hello_world']);
     }
@@ -91,11 +109,28 @@ function view_jrHelloWorld_hw($_post,$_user,$_conf)
 
 //----------------------------------------
 // modulehello (magic_view)
+// view needs to be registered in jrHelloWorld_init()
 //----------------------------------------
 function view_jrHelloWorld_modulehello($_post,$_user,$_conf)
 {
     $_rep['hello_world'] = 'hello world';
     $out = jrCore_parse_template('hw.tpl',$_rep,'jrHelloWorld');
     return $out;
+}
+
+//------------------------------
+// say hello in an acp page
+// YOUR-SITE.com/hello/helloadmin
+//------------------------------
+function view_jrHelloWorld_helloadmin($_post,$_user,$_conf)
+{
+    jrUser_master_only();
+    jrCore_page_include_admin_menu();
+    jrCore_page_admin_tabs('jrHelloWorld');
+    
+    jrCore_page_banner('hi admin');
+    jrCore_page_note('hello world');
+
+    jrCore_page_display();
 }
 
