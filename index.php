@@ -99,3 +99,20 @@ function view_jrHelloWorld_modulehello($_post,$_user,$_conf)
     return $out;
 }
 
+
+//------------------------------
+// say hello in an acp page
+// YOUR-SITE.com/hello/helloadmin
+//------------------------------
+function view_jrHelloWorld_helloadmin($_post,$_user,$_conf)
+{
+    jrUser_master_only();
+    jrCore_page_include_admin_menu();
+    jrCore_page_admin_tabs('jrHelloWorld');
+    
+    jrCore_page_banner('hi admin');
+    jrCore_page_note('hello world');
+
+    jrCore_page_display();
+}
+
