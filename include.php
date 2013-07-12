@@ -30,10 +30,31 @@ function jrHelloWorld_meta()
  */
 function jrHelloWorld_init()
 {
-    // magic view - seen at /username/blog/profilehello
-    // you need to register with the view from the blog module 
-    // 
+    // magic view - seen at YOUR-SITE.com/blog/modulehello, YOUR-SITE.com/audio/modulehello, etc
+    // provides view_jrHelloWorld_modulehello for each module
+    // view_jrHelloWorld_modulehello is a function in index.php
     jrCore_register_module_feature('jrCore','magic_view','jrHelloWorld','modulehello','view_jrHelloWorld_modulehello');
 
+    jrCore_register_event_listener('jrCore','form_display','jrHelloWorld_form_display_listener');
+
     return true;
+}
+
+/**
+ * form_display listener displays "hello world" as an alert when viewing the integrity check form
+ * @param $_data array Array of information from trigger
+ * @param $_user array Current user
+ * @param $_conf array Global Config
+ * @param $_args array additional parameters passed in by trigger caller
+ * @param $event string Triggered Event name
+ * @return array
+ */
+function jrHelloWorld_form_display_listener($_data,$_user,$_conf,$_args,$event)
+{
+    // filter out everything except the integrity check form
+    if ($_data['form_view'] == 'jrCore/integrity_check') {
+        $_js = array('alert("Hello World");');
+        jrCore_create_page_element('javascript_ready_function',$_js);
+    }
+    return $_data;
 }
