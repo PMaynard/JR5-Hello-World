@@ -31,4 +31,9 @@ Note: You can switch this off using the config setting
 With the one optional parameter: 
 {jrHelloWorld_hi spelling="wrong"}
 
+#Write Hello World to a log using a form (admin only)
+YOUR-SITE.com/hello/writetologform
+Form is created by view_jrHelloWorld_writetologform.
+Runs view_jrHelloWorld_writetologform_save on save (via ajax).
+
 Response to [Forum Question](http://www.jamroom.net/phpBB2/viewtopic.php?p=236618)
