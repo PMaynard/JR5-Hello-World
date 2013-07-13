@@ -24,4 +24,9 @@ YOUR-SITE.com/hello/helloadmin
 #Via an event listener
 YOUR-SITE.com/core/integrity_check
 
+#Via a smarty function
+{jrHelloWorld_hi}
+With the one optional parameter: 
+{jrHelloWorld_hi spelling="wrong"}
+
 Response to [Forum Question](http://www.jamroom.net/phpBB2/viewtopic.php?p=236618)
