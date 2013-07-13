@@ -134,3 +134,65 @@ function view_jrHelloWorld_helloadmin($_post,$_user,$_conf)
     jrCore_page_display();
 }
 
+
+//------------------------------
+// helloform view
+// A form to write Hello World to a log
+//------------------------------
+function view_jrHelloWorld_writetologform($_post,$_user,$_conf)
+{
+    // Master Admin only 
+    jrUser_master_only();
+
+    jrCore_page_banner('Write Hello World to Log');
+
+    // Form init
+    $_tmp = array(
+        'submit_value' => 'write to log',
+        'cancel'       => 'referrer'
+    );
+    jrCore_form_create($_tmp);
+
+    // Where to write to
+    $_opt = array(
+        0 => 'select log',
+        1 => 'write to activity log',
+        2 => 'write to debug log'
+    );
+    $_tmp = array(
+        'name'     => 'write_to',
+        'label'    => 'which log?',
+        'help'     => 'When the form is saved Hello World will be written to the Jamroom activity log or the debug log depending on your selection here.',
+        'type'     => 'select',
+        'options'  => $_opt,
+        'default'  => 0,
+        'validate' => 'number_nn',
+        'min'      => 0,
+        'max'      => 2,
+        'required' => false
+    );
+    jrCore_form_field_create($_tmp);
+
+    // Display page with form in it
+    jrCore_page_display();
+}
+
+//------------------------------
+// helloform save
+//------------------------------
+function view_jrHelloWorld_writetologform_save($_post,$_user,$_conf)
+{
+    // Master Admin only 
+    jrUser_master_only();
+    if ($_post['write_to'] == 1) {
+        jrCore_logger('INF','Hello World!'); // write to jamroom activity log
+        jrCore_set_form_notice('success','Hello world has been written to the activity log');
+    } elseif ($_post['write_to'] == 2) {
+        fdebug('Hello World!'); // write to debug log
+        jrCore_set_form_notice('success','Hello world has been written to the debug log');
+    } else {
+        jrCore_set_form_notice('error','ERROR: You must select which log to write to');
+    }
+    jrCore_form_result();
+}
+

@@ -52,7 +52,8 @@ function jrHelloWorld_init()
 function jrHelloWorld_form_display_listener($_data,$_user,$_conf,$_args,$event)
 {
     // filter out everything except the integrity check form
-    if ($_data['form_view'] == 'jrCore/integrity_check') {
+    // and check the module config setting to see if we want the alert.
+    if ($_data['form_view'] == 'jrCore/integrity_check' && $_conf['jrHelloWorld_hello_world'] == 'on') {
         $_js = array('alert("Hello World");');
         jrCore_create_page_element('javascript_ready_function',$_js);
     }

@@ -23,10 +23,17 @@ YOUR-SITE.com/hello/helloadmin
 
 #Via an event listener
 YOUR-SITE.com/core/integrity_check
+Creates a javascript alert when viewing the integrity check form
+Note: You can switch this off using the config setting
 
 #Via a smarty function
 {jrHelloWorld_hi}
 With the one optional parameter: 
 {jrHelloWorld_hi spelling="wrong"}
+
+#Write Hello World to a log using a form (admin only)
+YOUR-SITE.com/hello/writetologform
+Form is created by view_jrHelloWorld_writetologform.
+Runs view_jrHelloWorld_writetologform_save on save (via ajax).
 
 Response to [Forum Question](http://www.jamroom.net/phpBB2/viewtopic.php?p=236618)

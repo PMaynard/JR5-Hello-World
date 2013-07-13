@@ -4,7 +4,7 @@
 defined('APP_DIR') or exit();
 
 //------------------------------
-// profile_default - /username/hello
+// profile_default - /profilename/hello
 //------------------------------
 function profile_view_jrHelloWorld_default($_profile,$_post,$_user,$_conf)
 {
