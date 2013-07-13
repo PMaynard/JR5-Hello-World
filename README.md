@@ -23,6 +23,8 @@ YOUR-SITE.com/hello/helloadmin
 
 #Via an event listener
 YOUR-SITE.com/core/integrity_check
+Creates a javascript alert when viewing the integrity check form
+Note: You can switch this off using the config setting
 
 #Via a smarty function
 {jrHelloWorld_hi}
