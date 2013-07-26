@@ -196,3 +196,13 @@ function view_jrHelloWorld_writetologform_save($_post,$_user,$_conf)
     jrCore_form_result();
 }
 
+//------------------------------
+// jrEmbed tab (loaded via ajax)
+//------------------------------
+function view_jrHelloWorld_tab($_post,$_user,$_conf)
+{
+    jrUser_session_require_login();
+
+    return jrCore_parse_template('tab_ajax_helloworld.tpl',$_rt,'jrHelloWorld');
+}
+
