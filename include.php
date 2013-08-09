@@ -36,6 +36,10 @@ function jrHelloWorld_init()
     jrCore_register_module_feature('jrCore','magic_view','jrHelloWorld','modulehello','view_jrHelloWorld_modulehello');
     
     jrCore_register_event_listener('jrCore','form_display','jrHelloWorld_form_display_listener');
+    
+    //add a tab to the tinymce popup
+    jrCore_register_event_listener('jrEmbed','tinymce_popup','jrHelloWorld_tinymce_popup_listener');
+    jrCore_register_event_listener('jrEmbed','output_html','jrHelloWorld_output_html_listener');
 
     return true;
 }
@@ -76,4 +80,49 @@ function smarty_function_jrHelloWorld_hi($params,$smarty)
         return 'Hellow Worlg (which is definitely more than valid as first words written, spoken or coded).';
     }
     return 'Hello World';
+}
+
+/**
+ * Adds hello world to the popup tinymce editor for insertion into pages
+ */
+function jrHelloWorld_tinymce_popup_listener($_data,$_user,$_conf,$_args,$event)
+{
+    $flag_found = FALSE;
+
+    //over-ride any existing jrSoundCloud setting.
+    foreach ($_data as $k => $tab) {
+        if ($tab['module'] == 'jrHelloWorld') {
+            $_data[$k]['tab_location'] = 'jrHelloWorld';
+            $_data[$k]['tab_tpl']      = 'tab_jrHelloWorld.tpl';
+            $_data[$k]['onclick']      = 'loadHelloWorld()';
+            $flag_found                = TRUE;
+        }
+    }
+
+    //this modules tab was not set, so set it.
+    if (!$flag_found) {
+        $_data[] = array(
+            'module'       => 'jrHelloWorld',
+            'name'         => 'helloworld',
+            'tab_location' => 'jrHelloWorld',
+            'tab_tpl'      => 'tab_jrHelloWorld.tpl',
+            'onclick'      => 'loadHelloWorld();'
+        );
+    }
+
+    return $_data;
+}
+
+
+/**
+ * for the jrEmbed module to replace the tag [jrEmbed module="ujIpsumJam"] with 'Hello World!'.
+ * ujIpsumJam_output_html_listener
+ */
+function jrHelloWorld_output_html_listener($_data,$_user,$_conf,$_args,$event) {
+    //search $_data for [jrEmbed module="ujIpsumJam"] that tab_ajax_audio.tpl put into the editor's html
+    if ($_data['module'] == 'jrHelloWorld') {
+        //replace with the text
+        $_data['html'] = 'Hello World!';
+    }
+    return $_data;
 }

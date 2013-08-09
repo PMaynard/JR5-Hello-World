@@ -36,4 +36,7 @@ YOUR-SITE.com/hello/writetologform
 Form is created by view_jrHelloWorld_writetologform.
 Runs view_jrHelloWorld_writetologform_save on save (via ajax).
 
+#Via a tab in the jrEmbed TinyMCE popup
+Adds a tab to the popup, inserts a placeholder into the editor text which is replaced with 'Hello World!' when the text is displayed.
+
 Response to [Forum Question](http://www.jamroom.net/phpBB2/viewtopic.php?p=236618)
